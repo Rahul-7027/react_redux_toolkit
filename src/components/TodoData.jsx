@@ -12,6 +12,7 @@ const TodoData = () => {
     const disptach = useDispatch()
 
     const store = useSelector((store) => store.todo.tasks)
+    console.log(5555,store)
     const handleSubmit = (event) => {
         event.preventDefault()
         return disptach(addTodo(data))
@@ -31,7 +32,6 @@ const TodoData = () => {
         disptach(fetchTask())
     }
 
-    console.log(333,store.id)
     return (
         <div>
             <div>
@@ -47,6 +47,7 @@ const TodoData = () => {
                             </form>
                             <button onClick={HandleFetchData}>Fetch All</button>
                         </div>
+                        <hr />
                         <ul id='list-container'>
                             {store && store.map((element, index) => (
                                 <li key={index}>
