@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTodo, deleteTodo } from '../Slices/Todo'
-import { fetchTask } from '../store/store'
+// import { fetchTask } from '../store/store'
 import { MdDelete } from 'react-icons/md'
 
 
@@ -12,10 +12,11 @@ const TodoData = () => {
     const disptach = useDispatch()
 
     const store = useSelector((store) => store.todo.tasks)
-    console.log(5555,store)
+    console.log(5555, store)
     const handleSubmit = (event) => {
         event.preventDefault()
-        return disptach(addTodo(data))
+        disptach(addTodo(data))
+        setData("")
     }
 
     const handleChanged = (event) => {
@@ -24,13 +25,13 @@ const TodoData = () => {
 
     const handleDelete = (id) => {
         console.log("deleting ...")
-        return disptach(deleteTodo(id))
+        disptach(deleteTodo(id))
 
     }
 
-    const HandleFetchData = () => {
-        disptach(fetchTask())
-    }
+    // const HandleFetchData = () => {
+    //     disptach(fetchTask())
+    // }
 
     return (
         <div>
@@ -45,7 +46,7 @@ const TodoData = () => {
                                 <input type="text" value={data} onChange={handleChanged} id='input-box' placeholder='Add a new task' />
                                 <button>Add Task</button>
                             </form>
-                            <button onClick={HandleFetchData}>Fetch All</button>
+                            {/* <button onClick={HandleFetchData}>Fetch All</button> */}
                         </div>
                         <hr />
                         <ul id='list-container'>
@@ -53,7 +54,7 @@ const TodoData = () => {
                                 <li key={index}>
                                     <p>{index}: {element}</p>
                                     <div className="icon-style">
-                                        <MdDelete onClick={() => handleDelete(index)} />
+                                        <MdDelete onClick={() => handleDelete(element.index)} />
                                     </div>
                                 </li>
                             ))}

@@ -7,16 +7,13 @@ export const todoSlice = createSlice({
     },
     reducers: {
         addTodo: (state, action) => {
-            state.tasks.push(action.payload); // Adds a single task
-        },
-        setTodos: (state, action) => {
-            state.tasks = action.payload; // Replaces all tasks
+            state.tasks.push(action.payload); // Adds a sinsgle task
         },
         deleteTodo: (state, action) => {
-            state.tasks.filter((element) => element.id !== action.payload)
+            state.tasks = state.tasks.filter((element) => element.id !== action.payload)
         }
     }
 });
 
-export const { addTodo, setTodos, deleteTodo } = todoSlice.actions;
+export const { addTodo, deleteTodo } = todoSlice.actions;
 export default todoSlice.reducer;
